@@ -15,13 +15,6 @@ public class ConsoleGame {
     this.game = game;
   }
 
-  // Application Assembly and Startup
-  public static void main(String[] args) {
-    Game game = new Game();
-    ConsoleGame consoleGame = new ConsoleGame(game); // in general: Entities aren't directly passed in to Adapters
-    consoleGame.start();
-  }
-
   private void resetScreen() {
     System.out.println(ansi().reset());
   }
