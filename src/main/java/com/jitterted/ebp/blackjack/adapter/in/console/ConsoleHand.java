@@ -1,12 +1,15 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.adapter.in.console;
+
+import com.jitterted.ebp.blackjack.domain.Hand;
 
 import java.util.stream.Collectors;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
+// GOAL: convert to package access
 public class ConsoleHand {
 
-  static String displayFirstCard(Hand hand) { // DOMAIN (Hand) --> Adapter (String)
+  public static String displayFirstCard(Hand hand) { // DOMAIN (Hand) --> Adapter (String)
     return ConsoleCard.display(hand.cards().get(0));
   }
 
