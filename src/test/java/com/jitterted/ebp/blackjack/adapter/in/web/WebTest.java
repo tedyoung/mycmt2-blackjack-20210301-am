@@ -39,4 +39,9 @@ public class WebTest {
            .andExpect(status().is3xxRedirection());
   }
 
+  @Test
+  public void getOfDoneEndpointIs200Ok() throws Exception {
+    mockMvc.perform(get("/done"))
+           .andExpect(status().isOk());
+  }
 }

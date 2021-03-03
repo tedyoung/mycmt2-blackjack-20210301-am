@@ -39,4 +39,11 @@ public class BlackjackController {
     return "redirect:/game";
   }
 
+  @GetMapping("/done")
+  public String viewDone(Model model) {
+
+    return "done";
+  }
+
+
 }
