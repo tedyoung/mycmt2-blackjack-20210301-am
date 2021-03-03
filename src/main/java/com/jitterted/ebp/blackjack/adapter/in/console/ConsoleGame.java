@@ -10,6 +10,7 @@ import static org.fusesource.jansi.Ansi.ansi;
 
 public class ConsoleGame {
 
+  // THIS VIOLATES Hexagonal Architecture: NO DIRECT references to Entities
   private final Game game;
 
   public ConsoleGame(Game game) {
