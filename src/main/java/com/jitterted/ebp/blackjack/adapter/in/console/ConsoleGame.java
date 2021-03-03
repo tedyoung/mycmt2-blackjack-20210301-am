@@ -1,6 +1,7 @@
 package com.jitterted.ebp.blackjack.adapter.in.console;
 
 import com.jitterted.ebp.blackjack.domain.Game;
+import com.jitterted.ebp.blackjack.domain.GameOutcome;
 import org.fusesource.jansi.Ansi;
 
 import java.util.Scanner;
@@ -86,7 +87,8 @@ public class ConsoleGame {
 
     displayFinalGameState();
 
-    System.out.println(game.determineOutcome().display());
+    GameOutcome gameOutcome = game.determineOutcome();
+    System.out.println(ConsoleGameOutcome.of(gameOutcome));
 
     resetScreen();
   }
