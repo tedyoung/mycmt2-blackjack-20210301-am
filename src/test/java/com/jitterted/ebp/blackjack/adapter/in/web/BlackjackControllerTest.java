@@ -67,4 +67,17 @@ class BlackjackControllerTest {
         .hasSize(3);
   }
 
+  @Test
+  public void playerHitsGoesBustThenRedirectToDonePage() throws Exception {
+    Deck playerHitsGoesBustDeck = StubDeck.createPlayerHitsGoesBustDeck();
+    Game game = new Game(playerHitsGoesBustDeck);
+    BlackjackController blackjackController = new BlackjackController(game);
+    blackjackController.startGame();
+
+    String redirectPage = blackjackController.hitCommand();
+
+    assertThat(redirectPage)
+        .isEqualTo("redirect:/done");
+  }
+
 }
