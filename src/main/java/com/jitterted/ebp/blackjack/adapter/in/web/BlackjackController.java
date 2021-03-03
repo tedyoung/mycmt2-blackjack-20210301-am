@@ -45,6 +45,11 @@ public class BlackjackController {
     return "done";
   }
 
+  @PostMapping("/stand")
+  public String standCommand() {
+    return "redirect:/";
+  }
+
   public void populateGameViewInto(Model model) {
     GameView gameView = GameView.of(game);
     model.addAttribute("gameView", gameView);
