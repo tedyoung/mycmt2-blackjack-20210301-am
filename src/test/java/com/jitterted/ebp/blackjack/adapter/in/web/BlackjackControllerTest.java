@@ -54,7 +54,10 @@ class BlackjackControllerTest {
 
   @Test
   public void hitCommandDealsAdditionalCardToPlayer() throws Exception {
-    Game game = new Game(new Deck());
+    Deck playerHitsDoesNotGoBustDeck = new StubDeck(Rank.TEN, Rank.TWO,
+                                                    Rank.EIGHT, Rank.FIVE,
+                                                    Rank.TWO);
+    Game game = new Game(playerHitsDoesNotGoBustDeck);
     BlackjackController blackjackController = new BlackjackController(game);
     blackjackController.startGame();
 
@@ -78,6 +81,24 @@ class BlackjackControllerTest {
 
     assertThat(redirectPage)
         .isEqualTo("redirect:/done");
+  }
+
+  @Test
+  public void donePageShowsFinalGameViewWithOutcome() throws Exception {
+    Game game = new Game(new Deck());
+    BlackjackController blackjackController = new BlackjackController(game);
+    blackjackController.startGame();
+
+    Model model = new ConcurrentModel();
+    blackjackController.viewDone(model);
+
+    assertThat(model.containsAttribute("gameView"))
+        .isTrue();
+
+    String outcome = (String) model.getAttribute("outcome");
+
+    assertThat(outcome)
+        .isNotBlank();
   }
 
 }
