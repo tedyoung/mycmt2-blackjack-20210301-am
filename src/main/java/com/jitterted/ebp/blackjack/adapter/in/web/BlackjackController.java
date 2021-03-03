@@ -25,8 +25,7 @@ public class BlackjackController {
 
   @GetMapping("/game")
   public String gameView(Model model) {
-    GameView gameView = GameView.of(game);
-    model.addAttribute("gameView", gameView);
+    populateGameViewInto(model);
     return "blackjack";
   }
 
@@ -41,10 +40,14 @@ public class BlackjackController {
 
   @GetMapping("/done")
   public String viewDone(Model model) {
-    GameView gameView = GameView.of(game);
-    model.addAttribute("gameView", gameView);
+    populateGameViewInto(model);
     model.addAttribute("outcome", game.determineOutcome().toString());
     return "done";
+  }
+
+  public void populateGameViewInto(Model model) {
+    GameView gameView = GameView.of(game);
+    model.addAttribute("gameView", gameView);
   }
 
 
