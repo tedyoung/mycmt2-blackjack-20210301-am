@@ -71,16 +71,19 @@ public class Game {
   public void playerHits() {
     // throw exception if isPlayerDone
     playerHand.drawFrom(deck);
-    playerDone = playerHand.isBusted();
-    if (playerDone) {
-      gameMonitor.roundCompleted(this);
-    }
+    updatePlayerDone(playerHand.isBusted());
   }
 
   public void playerStands() {
-    playerDone = true;
     dealerTurn();
-    gameMonitor.roundCompleted(this);
+    updatePlayerDone(true);
+  }
+
+  private void updatePlayerDone(boolean isDone) {
+    playerDone = isDone;
+    if (playerDone) {
+      gameMonitor.roundCompleted(this);
+    }
   }
 
   public boolean isPlayerDone() {
