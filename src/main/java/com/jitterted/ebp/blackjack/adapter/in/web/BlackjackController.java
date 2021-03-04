@@ -32,7 +32,7 @@ public class BlackjackController {
   @PostMapping("/hit")
   public String hitCommand() {
     game.playerHits();
-    if (game.isPlayerDone()) {
+    if (game.isPlayerDone()) { // game.currentState: IN_PROGRESS, GAME_OVER, SPLIT, INSURANCE, SURRENDER
       return "redirect:/done";
     }
     return "redirect:/game";
@@ -48,7 +48,6 @@ public class BlackjackController {
   @PostMapping("/stand")
   public String standCommand() {
     game.playerStands();
-    game.dealerTurn();
     return "redirect:/done";
   }
 
@@ -56,6 +55,5 @@ public class BlackjackController {
     GameView gameView = GameView.of(game);
     model.addAttribute("gameView", gameView);
   }
-
 
 }

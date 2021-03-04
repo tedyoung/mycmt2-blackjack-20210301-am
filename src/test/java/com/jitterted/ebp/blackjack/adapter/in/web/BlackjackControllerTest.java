@@ -118,6 +118,7 @@ class BlackjackControllerTest {
   }
 
   @Test
+  // This test is redundant, the behavior we're checking is contained in the DOMAIN
   public void standResultsInPlayerLosesToDealerWhoDrewAdditionalCard() throws Exception {
     Deck dealerBeatsPlayerAfterDrawingAdditionalCardDeck = new StubDeck(Rank.TEN, Rank.QUEEN,
                                                                         Rank.EIGHT, Rank.FIVE,
